@@ -12,6 +12,9 @@ const jakarta = Plus_Jakarta_Sans({
 });
 
 export const metadata: Metadata = {
+  // Wajib ada agar Next.js mengenali domain utama untuk Open Graph / Image preview
+  metadataBase: new URL("https://kdkmp-stvn.vercel.app"), 
+  
   title: "KDKMP — Koperasi Desa/Kelurahan Merah Putih",
   description:
     "Program strategis nasional untuk membangun ekonomi desa, mengurangi kemiskinan, dan mengelola rantai pasok melalui koperasi modern yang inklusif dan berkelanjutan.",
@@ -24,16 +27,15 @@ export const metadata: Metadata = {
     "Torasera",
     "Pemberdayaan Ekonomi",
   ],
-  // Konfigurasi Open Graph untuk Preview WhatsApp / Media Sosial
   openGraph: {
     title: "KDKMP — Koperasi Desa/Kelurahan Merah Putih",
     description:
       "Membangun Ekonomi Desa, Mewujudkan Indonesia Mandiri. Program strategis nasional melalui koperasi modern.",
-    url: "https://kdkmp-stvn.vercel.app", // Sesuaikan dengan domain/link Vercel Anda
+    url: "https://kdkmp-stvn.vercel.app",
     siteName: "KDKMP Mandarsah",
     images: [
       {
-        url: "/logo-kdkmp.png", // Mengambil langsung dari folder public/
+        url: "/logo-kdkmp.png", // Dengan adanya metadataBase di atas, path ini otomatis jadi absolut
         width: 1200,
         height: 630,
         alt: "Logo KDKMP Lubuk Mandarsah",
@@ -42,7 +44,6 @@ export const metadata: Metadata = {
     locale: "id_ID",
     type: "website",
   },
-  // Konfigurasi Favicon / Ikon Tab Browser
   icons: {
     icon: "/logo-kdkmp.png",
     shortcut: "/logo-kdkmp.png",
