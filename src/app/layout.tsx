@@ -24,12 +24,29 @@ export const metadata: Metadata = {
     "Torasera",
     "Pemberdayaan Ekonomi",
   ],
+  // Konfigurasi Open Graph untuk Preview WhatsApp / Media Sosial
   openGraph: {
     title: "KDKMP — Koperasi Desa/Kelurahan Merah Putih",
     description:
       "Membangun Ekonomi Desa, Mewujudkan Indonesia Mandiri. Program strategis nasional melalui koperasi modern.",
-    type: "website",
+    url: "https://kdkmp-stvn.vercel.app", // Sesuaikan dengan domain/link Vercel Anda
+    siteName: "KDKMP Mandarsah",
+    images: [
+      {
+        url: "/logo-kdkmp.png", // Mengambil langsung dari folder public/
+        width: 1200,
+        height: 630,
+        alt: "Logo KDKMP Lubuk Mandarsah",
+      },
+    ],
     locale: "id_ID",
+    type: "website",
+  },
+  // Konfigurasi Favicon / Ikon Tab Browser
+  icons: {
+    icon: "/logo-kdkmp.png",
+    shortcut: "/logo-kdkmp.png",
+    apple: "/logo-kdkmp.png",
   },
 };
 
