@@ -74,8 +74,8 @@ export default function Footer() {
             <h3 className="text-lg font-semibold text-white">Kontak</h3>
             <ul className="flex flex-col gap-3 text-sm">
               <li className="text-slate-400">
-                Jl. Merdeka No. 45, Jakarta Pusat<br />
-                DKI Jakarta, Indonesia
+                Lubuk Mandarsah<br />
+                Jambi, Indonesia
               </li>
               <li>
                 <a href="tel:+6281234567890" className="text-slate-400 hover:text-white transition-colors">
