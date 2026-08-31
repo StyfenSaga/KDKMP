@@ -1,54 +1,31 @@
 "use client";
 
-import React, { useState, useEffect } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
-import { ImageIcon } from 'lucide-react';
-
-const stackImages = [
-  {
-    id: 1,
-    src: "https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?q=80&w=1200&auto=format&fit=crop",
-    title: "Pusat Rantai Pasok",
-    badge: "Infrastruktur"
-  },
-  {
-    id: 2,
-    src: "https://images.unsplash.com/photo-1592982537447-7440770cbfc9?q=80&w=1200&auto=format&fit=crop",
-    title: "Potensi Agrikultur",
-    badge: "Komoditas"
-  },
-  {
-    id: 3,
-    src: "https://images.unsplash.com/photo-1500937386664-56d1dfef3854?q=80&w=1200&auto=format&fit=crop",
-    title: "Pemberdayaan Desa",
-    badge: "Sosial"
-  }
-];
+import React from 'react';
+import { motion } from 'framer-motion';
 
 export function HeroSection() {
-  const [activeIndex, setActiveIndex] = useState(0);
-
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setActiveIndex((current) => (current + 1) % stackImages.length);
-    }, 4000); 
-    return () => clearInterval(interval);
-  }, []);
-
   return (
     <section
       id="beranda"
-      className="relative min-h-[92vh] flex items-center justify-center bg-white text-slate-900 pt-16 pb-14 lg:pt-24 lg:pb-20 overflow-hidden"
+      className="relative min-h-[92vh] flex items-center justify-center bg-white text-slate-900 pt-20 pb-14 lg:pt-28 lg:pb-24 overflow-hidden"
     >
-      {/* Premium Background */}
-      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,_var(--tw-gradient-stops))] from-red-50/40 via-white to-slate-50/60 pointer-events-none" />
-      <div className="absolute inset-0 bg-[url('https://grainy-gradients.vercel.app/noise.svg')] opacity-[0.02] mix-blend-overlay pointer-events-none" />
+      {/* Background Image of KDKMP building */}
+      <div 
+        className="absolute inset-0 bg-cover bg-[center_right_-240px] md:bg-[center_right_-120px] lg:bg-right no-repeat pointer-events-none z-0"
+        style={{ backgroundImage: "url('/hero-bg.jpg')" }}
+      />
+      
+      {/* Premium Background Gradients for maximum text readability */}
+      {/* On mobile: strong white overlay to make text readable. On desktop: smooth transition fade. */}
+      <div className="absolute inset-0 bg-gradient-to-r from-white via-white/95 to-white/30 md:from-white md:via-white/80 md:to-transparent pointer-events-none z-0" />
+      <div className="absolute inset-0 bg-gradient-to-b from-white/10 via-transparent to-white/40 pointer-events-none z-0" />
+      <div className="absolute inset-0 bg-[url('https://grainy-gradients.vercel.app/noise.svg')] opacity-[0.015] mix-blend-overlay pointer-events-none z-0" />
 
-      <div className="container mx-auto px-6 lg:px-12 relative z-10">
+      <div className="container mx-auto px-6 lg:px-12 relative z-10 max-w-7xl">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-16 items-center">
           
-          {/* ================= LEFT COLUMN (7 Kolom) ================= */}
-          <div className="lg:col-span-7 flex flex-col items-start text-left xl:pr-4 z-20">
+          {/* ================= LEFT COLUMN (8 Kolom) ================= */}
+          <div className="lg:col-span-8 flex flex-col items-start text-left xl:pr-4 z-20">
 
             <motion.h1
               initial={{ opacity: 0, y: 20 }}
@@ -71,7 +48,7 @@ export function HeroSection() {
               transition={{ duration: 0.6, delay: 0.2 }}
               className="mb-6"
             >
-              <p className="text-base sm:text-lg text-slate-600 leading-relaxed font-normal max-w-xl">
+              <p className="text-base sm:text-lg text-slate-600 leading-relaxed font-normal max-w-2xl">
                 KDKMP Lubuk Mandarsah hadir sebagai wadah ekonomi masyarakat untuk menghubungkan kebutuhan anggota, potensi lokal, dan peluang usaha desa melalui tata kelola koperasi yang profesional, transparan, dan bertahap menuju ekosistem digital.
               </p>
             </motion.div>
@@ -101,7 +78,7 @@ export function HeroSection() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.7, delay: 0.4 }}
-              className="w-full bg-slate-50/90 backdrop-blur-sm border border-slate-200/80 rounded-2xl p-4 sm:p-5 grid grid-cols-1 sm:grid-cols-3 gap-4 sm:gap-0 sm:divide-x divide-slate-200 shadow-sm items-start"
+              className="w-full bg-white/70 backdrop-blur-md border border-slate-200/60 rounded-2xl p-4 sm:p-5 grid grid-cols-1 sm:grid-cols-3 gap-4 sm:gap-0 sm:divide-x divide-slate-200/80 shadow-sm items-start"
             >
               <div className="flex flex-col sm:pr-4">
                 <h4 className="text-xs sm:text-sm font-bold text-slate-900 mb-1">Potensi Lokal</h4>
@@ -121,71 +98,8 @@ export function HeroSection() {
 
           </div>
 
-          {/* ================= RIGHT COLUMN (5 Kolom - Stack Gambar Diperbesar Secara Signifikan) ================= */}
-          <div className="lg:col-span-5 relative w-full h-[450px] sm:h-[520px] lg:h-[600px] z-10 flex items-center justify-center mt-8 lg:mt-0">
-            
-            {/* Ukuran container diperbesar menggunakan max-w-2xl dan tinggi ditingkatkan hingga 440px */}
-            <div className="relative w-full max-w-2xl h-[300px] sm:h-[370px] lg:h-[440px]">
-              
-              <AnimatePresence>
-                {stackImages.map((image, index) => {
-                  const relativeIndex = (index - activeIndex + stackImages.length) % stackImages.length;
-                  
-                  const isFront = relativeIndex === 0;
-                  const isMiddle = relativeIndex === 1;
-                  
-                  return (
-                    <motion.div
-                      key={image.id}
-                      className="absolute inset-0 rounded-[2.5rem] shadow-2xl origin-bottom-left overflow-hidden border-4 border-white bg-slate-100"
-                      initial={false}
-                      animate={{
-                        opacity: isFront ? 1 : isMiddle ? 0.9 : 0.6,
-                        scale: isFront ? 1 : isMiddle ? 0.95 : 0.9,
-                        y: isFront ? 0 : isMiddle ? -22 : -44,
-                        rotate: isFront ? 0 : isMiddle ? -3 : -6,
-                        zIndex: isFront ? 30 : isMiddle ? 20 : 10,
-                      }}
-                      transition={{ 
-                        duration: 0.8, 
-                        ease: [0.16, 1, 0.3, 1] 
-                      }}
-                    >
-                      <img 
-                        src={image.src} 
-                        alt={image.title} 
-                        className="w-full h-full object-cover"
-                      />
-                      
-                      <div className="absolute inset-0 bg-gradient-to-t from-slate-950/85 via-slate-950/20 to-transparent" />
-
-                      <div className="absolute top-5 left-5 sm:top-6 sm:left-6 bg-white/90 backdrop-blur-md px-3.5 py-1.5 rounded-full flex items-center gap-2 shadow-sm">
-                        <ImageIcon className="w-4 h-4 text-red-600" />
-                        <span className="text-[10px] font-bold uppercase tracking-widest text-slate-800">
-                          {image.badge}
-                        </span>
-                      </div>
-
-                      <div className="absolute bottom-6 left-6 right-6 sm:bottom-8 sm:left-8 sm:right-8 flex items-end justify-between">
-                        <div>
-                          <h3 className="text-xl sm:text-2xl font-bold text-white mb-1 shadow-sm">
-                            {image.title}
-                          </h3>
-                          <p className="text-xs text-white/80 font-mono tracking-wider">
-                            KDKMP LUBUK MANDARSAH
-                          </p>
-                        </div>
-                        <span className="hidden sm:inline-block px-3 py-1 rounded-md bg-white/20 backdrop-blur-md text-white text-xs font-mono">
-                          0{image.id} / 03
-                        </span>
-                      </div>
-                    </motion.div>
-                  );
-                })}
-              </AnimatePresence>
-
-            </div>
-          </div>
+          {/* ================= RIGHT COLUMN (4 Kolom - Kosong agar gambar gedung di belakang terlihat jelas) ================= */}
+          <div className="hidden lg:block lg:col-span-4" />
 
         </div>
       </div>
